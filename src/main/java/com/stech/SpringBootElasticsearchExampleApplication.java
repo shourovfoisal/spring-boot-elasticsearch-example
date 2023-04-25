@@ -1,5 +1,8 @@
 package com.stech;
 
+import co.elastic.clients.elasticsearch.core.SearchResponse;
+import co.elastic.clients.elasticsearch.core.search.Hit;
+import com.stech.dto.SearchResultDto;
 import com.stech.model.Employee;
 import com.stech.repository.EmployeeRepository;
 import com.stech.resource.ManualSearch;
@@ -34,8 +37,8 @@ public class SpringBootElasticsearchExampleApplication {
 	}
 
 	@GetMapping("/findEverything1")
-	public void findAllEmployees1() throws IOException {
-		manualSearch.getAll("Depp");
+	public List<SearchResultDto> findAllEmployees1() throws IOException {
+		return manualSearch.getAll("Epp");
 	}
 
 	@GetMapping("/findByFName/{firstName}")
