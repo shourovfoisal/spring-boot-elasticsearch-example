@@ -1,16 +1,27 @@
 package com.stech.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
-@Document(indexName = "employeeidx", createIndex = true)
+@Document(indexName = "employeeidx")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Employee {
 
     @Id
+    @Field(type = FieldType.Keyword, name = "id")
     private String id;
+
+    @Field(type = FieldType.Text, name = "firstname")
     private String firstname;
+
+    @Field(type = FieldType.Text, name = "lastname")
     private String lastname;
+
+    @Field(type = FieldType.Integer, name = "age")
     private int age;
 
     public String getId() {
